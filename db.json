@@ -1,0 +1,29 @@
+{
+  "students": [
+    {
+      "id": "f5f3",
+      "name": "Hamid Khan",
+      "email": "hamid@gmail.com",
+      "gender": "Male"
+    },
+    {
+      "name": "Salman Murathi",
+      "email": "salman@gmail.com",
+      "id": "0e75"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "1",
+      "name": "Amir"
+    },
+    {
+      "id": "2",
+      "name": "Hamza"
+    },
+    {
+      "id": "3",
+      "name": "Shuvo"
+    }
+  ]
+}

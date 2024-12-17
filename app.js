@@ -83,6 +83,20 @@ const edit = async (url, id) =>{
     window.location.href = "update-student.html";
 };
 
+// Function to populate teacher dropdown
+async function populateTeacherDropdown() {
+    const teacherData  = await get(teacherUrl) ;
+    const teacherDropdown = document.getElementById('student-teacher');
+
+    teacherData.forEach(teacher => {
+        const option = document.createElement('option');
+        option.value = teacher.name; 
+        option.textContent = teacher.name; 
+        teacherDropdown.appendChild(option);
+    });
+}
+
+
 const showStudentList = async () =>{
     const students = await get(studentsUrl);
     const studentList = document.getElementById("student-list");
@@ -104,16 +118,20 @@ const addStudent = document.getElementById("add-student");
 addStudent.addEventListener('click', async ()=>{
     const name = document.getElementById('student-name').value;
     const email = document.getElementById('student-email').value;
-    
-    const data = { name, email };
+    const gender = document.querySelector('input[name="student-gender"]:checked')?.value;
+    const teacher = document.getElementById('student-teacher').value;
+
+
+    const data = { name, email, gender, teacher };
     await post(studentsUrl, data);
 
     document.getElementById('student-name').value = '';
     document.getElementById('student-email').value = '';
+    document.querySelectorAll('input[name="student-gender"]').forEach(radio => radio.checked = false);
+    document.getElementById('student-teacher').value = '';
 });
 
 showStudentList();
-
-// edit student
+populateTeacherDropdown();
 
 
